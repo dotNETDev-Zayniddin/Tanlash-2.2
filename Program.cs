@@ -1,36 +1,33 @@
-﻿/*1. Vaqt kalkulyatori:
-Kirish sifatida daqiqalar sonini oladigan va uni soat:daqiqa formatida chiqaradigan dastur yozing. 
-Misol uchun, agar foydalanuvchi 135 daqiqani kiritsa, dastur "2:15" chiqishi kerak.
-Hisoblash uchun arifmetik amallardan foydalaning.
-*/
+﻿/*
+2. Yosh toifasini aniqlash:
+Foydalanuvchining yoshini so'ragan va uning yosh toifasini aniqlaydigan dastur yarating:
+ "bola" (0-12 yosh), "o'smir" (13-19 yosh), "kattalar" (20-59 yosh) yoki " katta” (60 yosh) va undan katta). 
+ Bu vazifa uchun if-else iboralaridan foydalaning. 
 
+*/
 using System;
 namespace Tanlash
-{   
+{
     class Program
     {
         static void Main(){
-            System.Console.Write("Daqiqalar sonini kiriting: ");
-            int minute = Convert.ToInt32(Console.ReadLine());
-            int hour =  (int) minute / 60;
-            if(hour < 24)
-            {
-                   System.Console.WriteLine($"Natija: {hour}:{(minute % 60):D2}");
+            System.Console.Write("Yoshingizni kiriting: ");
+            int age = Convert.ToInt32(Console.ReadLine());
+            if(age >=0 && age <= 12){
+                Console.WriteLine("bola");
+            }
+            else if(age>=13 && age <= 19){
+                System.Console.WriteLine("o'smir");
+            }
+            else if(age>=20 && age <= 59){
+                System.Console.WriteLine("kattalar");
+            }
+            else if( age >=60 && age <= 140){
+                System.Console.WriteLine("katta");
             }
             else{
-                System.Console.WriteLine("24 soatdan oshib ketdi. Kunni ham qo'shib hisoblashni xohlaysizmi (Ha/Yo'q)?");
-                string continueAction = Console.ReadLine().ToLower();
-                if(continueAction == "yoq" || continueAction == "yuq"){
-                   System.Console.WriteLine("Dastur yakunlandi"); 
-                }
-                else if(continueAction == "ha" || continueAction == "albatta" ){
-                    int day = (int) hour / 24;
-                    System.Console.WriteLine($"Natija: {day} kun {hour%24} soat {(minute % 60 ):D2} daqiqa");
-                }
+                Console.WriteLine("Yosh xato kiritilgan.\nDastur yakunlandi.\nDasturni qayta ishga tushuring.");
             }
-
-         
-            
         }
     }
 }
